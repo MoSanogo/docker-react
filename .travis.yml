@@ -8,6 +8,7 @@ script:
   - docker run -e CI=true msanogo/docker-react yarn run test
 deploy:
   provider: elasticbeanstalk
+  edge: true
   region: "ca-central-1"
   app: "modibo-sanogo-docker-react"
   env: "ModiboSanogoDockerReact-env-1"
