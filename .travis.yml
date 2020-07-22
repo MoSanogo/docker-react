@@ -6,3 +6,16 @@ before_install:
   - docker build -t msanogo/docker-react -f  Dockerfile.dev  .
 script:
   - docker run -e CI=true msanogo/docker-react yarn run test
+deploy:
+  provider: elasticbeanstalk
+  region: "ca-central-1"
+  app: "modibo-sanogo-docker-react"
+  env: "ModiboSanogoDockerReact-env-1"
+  bucket_name: "elasticbeanstalk-ca-central-1-082594015364"
+  bucket_path: "modibo-sanogo-docker-react"
+  on:
+    branch: master
+  access_key_id:
+    secure: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
