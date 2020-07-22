@@ -3,6 +3,6 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker build -f msanogo/docker-react Dockerfile.dev  .
+  - docker build -t msanogo/docker-react -f  Dockerfile.dev  .
 script:
   - docker run -e CI=true msanogo/docker-react yarn run test
